@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+import { RecipeComponent } from './recipe/component/recipe.component';
+
+const routes: Routes = [
+  // { path: '', redirectTo: '/proxlets', pathMatch: 'full' },
+  { path: 'recipe', component: RecipeComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
