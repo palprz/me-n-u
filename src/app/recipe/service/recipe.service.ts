@@ -4,7 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
-import { Recipe } from '../Recipe';
+import { SimpleRecipe } from '../simple-recipe';
+import { Recipe } from '../recipe';
 
 @Injectable({
   providedIn: 'root'
@@ -20,12 +21,19 @@ export class RecipeService {
         map(data => {
 
           for (const key of Object.keys(data["meals"])) {
-
+          
               const recipe: Recipe = new Recipe(
                   data["meals"][key]["strMeal"],
                   data["meals"][key]["strMealThumb"],
                   data["meals"][key]["idMeal"],
-                  // data["meals"][key]["strType"]
+                  data["meals"][key]["strDrinkAlternate"],
+                  data["meals"][key]["strCategory"],
+                  data["meals"][key]["strArea"],
+                  data["meals"][key]["strInstructions"],
+                  data["meals"][key]["strTags"],
+                  data["meals"][key]["strYoutube"]
+                  // data["meals"][key]["strIngredient"],
+                  // data["meals"][key]["strMeasure"],
               );
               recipeArray.push(recipe);
           }
@@ -34,19 +42,17 @@ export class RecipeService {
       );
   }
 
-  loadRecipeByIngredient(ingredient: String): Observable<Recipe[]> {
-      const recipeArray: Recipe[] = [];
+  loadRecipeByIngredient(ingredient: String): Observable<SimpleRecipe[]> {
+      const recipeArray: SimpleRecipe[] = [];
 
       return this.http.get('https://www.themealdb.com/api/json/v1/1/filter.php?i=' + ingredient).pipe(
         map(data => {
 
           for (const key of Object.keys(data["meals"])) {
-
-              const recipe: Recipe = new Recipe(
+              const recipe: SimpleRecipe = new SimpleRecipe(
                   data["meals"][key]["strMeal"],
                   data["meals"][key]["strMealThumb"],
-                  data["meals"][key]["idMeal"],
-                  // data["meals"][key]["strType"]
+                  data["meals"][key]["idMeal"]
               );
               recipeArray.push(recipe);
           }

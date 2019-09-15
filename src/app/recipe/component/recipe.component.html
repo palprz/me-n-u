@@ -1,10 +1,17 @@
-<p>
-  recipe works!
-   <tr *ngFor="let recipe of dataSource">
+Loaded single recipe!
+<div *ngFor="let recipe of dataSource">
+  <table>
+   <tr>
      <td><img src="{{recipe.strMealThumb}}" alt="Recipe image" height="50" width="50"></td>
      <td>{{recipe.strMeal}}</td>
-     <!-- <td>{{recipe.strMealThumb}}</td> -->
      <td><a href="/recipe?id={{recipe.idMeal}}">click click {{recipe.idMeal}}</a></td>
      <br/>
    </tr>
-</p>
+   <tr>
+      <td>{{recipe.strCategory}}</td>
+      <td>{{recipe.strTags}}</td>
+      <td></td>
+   </tr>
+   </table>
+   <p>{{recipe.strInstructions}}</p>
+ </div>

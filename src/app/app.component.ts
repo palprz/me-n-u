@@ -20,10 +20,9 @@ export class AppComponent {
   }
 
   checkRecipes(event: any) {
-    this.message = "Loading recipes...";
     this.recipeService.loadRecipeByIngredient(event.target.value).subscribe( recipes => {
       this.dataSource = recipes;
-      this.message = "Recipes loaded!";
+      this.message = "Loaded list with recipes!";
     });
   }
 
