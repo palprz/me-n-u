@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { RecipeComponent } from './recipe/component/recipe.component';
 
 const routes: Routes = [
-  // { path: '', redirectTo: '/proxlets', pathMatch: 'full' },
   { path: 'recipe', component: RecipeComponent },
 ];
 

@@ -10,14 +10,16 @@ import { RecipeService } from '../service/recipe.service';
 })
 export class RecipeComponent implements OnInit {
   dataSource;
+  loadedRecipe = false;
 
   constructor(private route: ActivatedRoute, private recipeService: RecipeService) { }
 
   ngOnInit() {
     const id: string = this.route.snapshot.queryParamMap.get('id');
 
-    this.recipeService.loadRecipeById(id).subscribe( recipes => {
-      this.dataSource = recipes;
+    this.recipeService.loadRecipeById(id).subscribe( recipe => {
+      this.dataSource = recipe;
+      this.loadedRecipe = true;
     });
   }
 

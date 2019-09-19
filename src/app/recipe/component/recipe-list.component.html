@@ -1,0 +1,19 @@
+<div class="columns">
+  <div class="column is-one-third"></div>
+  <div class="column is-one-third">
+    <div class="control">
+      <input #recipeInput class="input is-primary" type="text" value="chicken" (keyup.enter)="checkRecipes()">
+      <a style="margin-top: 10px;" class="button is-primary is-large is-fullwidth" (click)="checkRecipes()">Search my recipes, quick!</a>
+    </div>
+  </div>
+  <div class="column is-one-third"></div>
+</div>
+
+<div class="tile is-ancestor">
+  <div class="tile is-parent" style="flex-wrap: wrap;">
+    <div class="tile is-child is-3" *ngFor="let recipe of dataSource" style="margin: 30px 10px !important">
+      <div><img src="{{recipe.strMealThumb}}" alt="Recipe image" height="288" width="288"></div>
+      <div><a style="width: 288px;" class="button is-link is-outlined" href="/recipe?id={{recipe.idMeal}}">{{recipe.strMeal}}</a></div>
+    </div>
+  </div>
+</div>
