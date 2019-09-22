@@ -10,6 +10,7 @@ import { RecipeService } from '../service/recipe.service';
 })
 export class RecipeListComponent implements OnInit {
     dataSource;
+    responseMessage;
     // At the beginning, we don't want to show "no results found" message
     isEmptyList = false;
 
@@ -19,12 +20,13 @@ export class RecipeListComponent implements OnInit {
 
       if(category !== null) {
         this.checkRecipesByCategory(category);
+        this.responseMessage = "Found recipes for '" + category + "' category 👌";
       }
 
       if(ingredient !== null) {
         this.checkRecipesByIngredient(ingredient);
+        this.responseMessage = "Found recipes for '" + ingredient + "' ingredient 👌";
       }
-
     }
 
     constructor(private route: ActivatedRoute, private recipeService: RecipeService) {
@@ -32,15 +34,22 @@ export class RecipeListComponent implements OnInit {
 
     checkRecipesByIngredient(ingredient: String) {
       this.recipeService.loadRecipeByIngredient(ingredient).subscribe( recipes => {
-        this.dataSource = recipes;
-        this.isEmptyList = this.dataSource.length === 0;
+        this.provideResponse(recipes);
       });
     }
 
     checkRecipesByCategory(category: String) {
       this.recipeService.loadRecipeByCategory(category).subscribe( recipes => {
-        this.dataSource = recipes;
-        this.isEmptyList = this.dataSource.length === 0;
+        this.provideResponse(recipes);
       });
     }
+
+    provideResponse(recipes: Recipes[]) {
+      this.dataSource = recipes;
+      this.isEmptyList = this.dataSource.length === 0;
+      if(this.isEmptyList) {
+        this.responseMessage = "";
+      }
+    }
+
 }

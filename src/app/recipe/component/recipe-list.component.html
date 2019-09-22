@@ -1,7 +1,11 @@
+<div class="has-text-centered">
+  <p class="is-size-4">{{responseMessage}}</p>
+</div>
+
 <div class="tile is-ancestor">
   <div class="tile is-parent recipe-tiles">
     <div class="tile is-child is-3 recipe-tile" *ngFor="let recipe of dataSource">
-      <div><img src="{{recipe.strMealThumb}}" alt="Recipe image" height="288" width="288"></div>
+      <div><img src="{{recipe.strMealThumb}}" alt="Recipe image"></div>
       <div><a class="button is-link is-outlined recipe-link" href="/recipe?recipeId={{recipe.idMeal}}">{{recipe.strMeal}}</a></div>
     </div>
   </div>

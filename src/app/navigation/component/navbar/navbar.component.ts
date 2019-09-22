@@ -7,13 +7,22 @@ import { Router } from '@angular/router'
   styleUrls: ['./navbar.component.less']
 })
 export class NavbarComponent {
-    @ViewChild('recipeInput') recipeInput: ElementRef;
+    @ViewChild('valueInput') valueInput: ElementRef;
+    @ViewChild('ingredientFlag') ingredientFlagInput: ElementRef;
+    @ViewChild('categoryFlag') categoryFlagInput: ElementRef;
     redirectUrl;
 
     constructor(private router: Router) { }
 
     checkRecipes() {
-      this.redirectUrl = "/recipes?ingredient=" + this.recipeInput.nativeElement.value;
+      var ingredientFlag = this.ingredientFlagInput.nativeElement.checked;
+      var categoryFlag = this.categoryFlagInput.nativeElement.checked;
+
+      if(ingredientFlag) {
+        this.redirectUrl = "/recipes?ingredient=" + this.valueInput.nativeElement.value;
+      } else if(categoryFlag) {
+        this.redirectUrl = "/recipes?category=" + this.valueInput.nativeElement.value;
+      }
     }
-    
+
 }

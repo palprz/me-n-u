@@ -8,11 +8,31 @@
       </div>
       <div class="column">
         <div class="control">
-          <input #recipeInput class="input" type="text" value="chicken">
+          <input #valueInput class="input" type="text" value="chicken">
         </div>
       </div>
       <div class="column is-one-fifth">
         <a href="{{redirectUrl}}" class="button is-primary is-fullwidth" (click)="checkRecipes()">Search recipes, quick!</a>
+      </div>
+    </div>
+
+    <div class="columns" style="margin-top: -35px;">
+      <div class="column is-one-fifth"></div>
+      <div class="column">
+        <div class="control">
+          Search by
+          <label class="radio">
+            <input #ingredientFlag type="radio" name="answer" checked>
+            ingredient
+          </label>
+          <label class="radio">
+            <input #categoryFlag type="radio" name="answer">
+            category
+          </label>
+        </div>
+      </div>
+      <div class="column is-one-fifth is-size-7">
+        Made by <a class="has-text-warning github-link" href="https://github.com/palprz">Przemyslaw Paluch</a>
       </div>
     </div>
   </div>
