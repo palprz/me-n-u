@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { RecipeService } from '../service/recipe.service';
 
@@ -8,19 +9,38 @@ import { RecipeService } from '../service/recipe.service';
   styleUrls: ['./recipe-list.component.less']
 })
 export class RecipeListComponent implements OnInit {
-    @ViewChild('recipeInput') recipeInput: ElementRef;
     dataSource;
+    // At the beginning, we don't want to show "no results found" message
+    isEmptyList = false;
 
     ngOnInit() {
+      const category: string = this.route.snapshot.queryParamMap.get('category');
+      const ingredient: string = this.route.snapshot.queryParamMap.get('ingredient');
+
+      if(category !== null) {
+        this.checkRecipesByCategory(category);
+      }
+
+      if(ingredient !== null) {
+        this.checkRecipesByIngredient(ingredient);
+      }
+
     }
 
-    constructor(private recipeService: RecipeService) {
+    constructor(private route: ActivatedRoute, private recipeService: RecipeService) {
     }
 
-    checkRecipes() {
-      this.recipeService.loadRecipeByIngredient(this.recipeInput.nativeElement.value).subscribe( recipes => {
+    checkRecipesByIngredient(ingredient: String) {
+      this.recipeService.loadRecipeByIngredient(ingredient).subscribe( recipes => {
         this.dataSource = recipes;
+        this.isEmptyList = this.dataSource.length === 0;
       });
     }
 
+    checkRecipesByCategory(category: String) {
+      this.recipeService.loadRecipeByCategory(category).subscribe( recipes => {
+        this.dataSource = recipes;
+        this.isEmptyList = this.dataSource.length === 0;
+      });
+    }
 }

@@ -1,0 +1,19 @@
+<div class="has-background-info has-text-white menu-navbar">
+  <div class="container is-widescreen">
+    <div class="columns">
+      <div class="column is-one-fifth">
+        <div class="is-italic is-pulled-right">
+          <a class="button is-info is-family-secondary" href="/recipes">Me'N'U</a>
+        </div>
+      </div>
+      <div class="column">
+        <div class="control">
+          <input #recipeInput class="input" type="text" value="chicken">
+        </div>
+      </div>
+      <div class="column is-one-fifth">
+        <a href="{{redirectUrl}}" class="button is-primary is-fullwidth" (click)="checkRecipes()">Search recipes, quick!</a>
+      </div>
+    </div>
+  </div>
+</div>

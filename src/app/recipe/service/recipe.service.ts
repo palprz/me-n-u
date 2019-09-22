@@ -19,6 +19,11 @@ export class RecipeService {
       return this.http.get('https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + id).pipe(
         map(data => {
 
+          if(data["meals"] === null) {
+            // Found no result
+            return null;
+          }
+
           for (const key of Object.keys(data["meals"])) {
             const ingredientArray: Ingredient[] = [];
             for (var i=1; i <= 20; i++) {
@@ -32,19 +37,17 @@ export class RecipeService {
                 ingredientArray.push(ingredient);
               }
             }
-            
+
             const recipe: Recipe = new Recipe(
                 data["meals"][key]["strMeal"],
                 data["meals"][key]["strMealThumb"],
                 data["meals"][key]["idMeal"],
-                data["meals"][key]["strDrinkAlternate"],
                 data["meals"][key]["strCategory"],
                 data["meals"][key]["strArea"],
                 data["meals"][key]["strInstructions"],
-                data["meals"][key]["strTags"],
-                data["meals"][key]["strYoutube"],
                 ingredientArray
             );
+
             return recipe;
           }
         })
@@ -57,6 +60,11 @@ export class RecipeService {
       return this.http.get('https://www.themealdb.com/api/json/v1/1/filter.php?i=' + ingredient).pipe(
         map(data => {
 
+          if(data["meals"] === null) {
+            // Found no results
+            return recipeArray;
+          }
+
           for (const key of Object.keys(data["meals"])) {
               const recipe: SimpleRecipe = new SimpleRecipe(
                   data["meals"][key]["strMeal"],
@@ -65,6 +73,32 @@ export class RecipeService {
               );
               recipeArray.push(recipe);
           }
+
+          return recipeArray;
+        })
+      );
+  }
+
+  loadRecipeByCategory(category: String): Observable<SimpleRecipe[]> {
+      const recipeArray: SimpleRecipe[] = [];
+
+      return this.http.get('https://www.themealdb.com/api/json/v1/1/filter.php?c=' + category).pipe(
+        map(data => {
+
+          if(data["meals"] === null) {
+            // Found no results
+            return recipeArray;
+          }
+
+          for (const key of Object.keys(data["meals"])) {
+              const recipe: SimpleRecipe = new SimpleRecipe(
+                  data["meals"][key]["strMeal"],
+                  data["meals"][key]["strMealThumb"],
+                  data["meals"][key]["idMeal"]
+              );
+              recipeArray.push(recipe);
+          }
+
           return recipeArray;
         })
       );
