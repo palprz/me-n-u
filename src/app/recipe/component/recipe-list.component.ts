@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { RecipeService } from '../service/recipe.service';
+import { SimpleRecipe } from '../simple-recipe';
 
 @Component({
   selector: 'app-recipe-list',
@@ -44,7 +45,7 @@ export class RecipeListComponent implements OnInit {
       });
     }
 
-    provideResponse(recipes: Recipes[]) {
+    provideResponse(recipes: SimpleRecipe[]) {
       this.dataSource = recipes;
       this.isEmptyList = this.dataSource.length === 0;
       if(this.isEmptyList) {
