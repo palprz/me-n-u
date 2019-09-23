@@ -7,9 +7,9 @@ import { Router } from '@angular/router'
   styleUrls: ['./navbar.component.less']
 })
 export class NavbarComponent {
-    @ViewChild('valueInput') valueInput: ElementRef;
-    @ViewChild('ingredientFlag') ingredientFlagInput: ElementRef;
-    @ViewChild('categoryFlag') categoryFlagInput: ElementRef;
+    @ViewChild('valueInput', {static: true}) valueInput: ElementRef;
+    @ViewChild('ingredientFlag', {static: true}) ingredientFlagInput: ElementRef;
+    @ViewChild('categoryFlag', {static: true}) categoryFlagInput: ElementRef;
     redirectUrl;
 
     constructor(private router: Router) { }
