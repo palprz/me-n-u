@@ -27,11 +27,14 @@ export class RecipeService {
           for (const key of Object.keys(data["meals"])) {
             const ingredientArray: Ingredient[] = [];
             for (var i=1; i <= 20; i++) {
-              if(data["meals"][key]["strIngredient" + i].length != 0
-                  && data["meals"][key]["strMeasure" + i].length != 0) {
+              var strIngredient = data["meals"][key]["strIngredient" + i];
+              var strMeasure = data["meals"][key]["strMeasure" + i];
+              console.log(strIngredient);
+              if((strIngredient === null || strIngredient.length != 0)
+                  && (strMeasure === null || strMeasure.length != 0)) {
                   const ingredient: Ingredient = new Ingredient(
-                    data["meals"][key]["strIngredient" + i],
-                    data["meals"][key]["strMeasure" + i]
+                    strIngredient,
+                    strMeasure
                   );
 
                 ingredientArray.push(ingredient);

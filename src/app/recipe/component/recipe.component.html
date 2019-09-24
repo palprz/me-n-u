@@ -1,22 +1,22 @@
 <div class="columns" *ngIf="loadedRecipe">
- <div class="column"></div>
+ <div class="column empty-column"></div>
  <div class="column is-two-fifths">
    <img src="{{dataSource.strMealThumb}}" alt="Recipe image" height="375" width="375">
    <p class="is-size-4 ingredients">Ingredients</p>
    <div *ngFor="let ingredient of dataSource.ingredients">
       <div class="columns">
-         <div class="column">{{ingredient.name}}</div>
-         <div class="column">{{ingredient.measure}}</div>
+         <div class="column ingredient-column">{{ingredient.name}}</div>
+         <div class="column measure-column">{{ingredient.measure}}</div>
       </div>
    </div>
  </div>
  <div class="column is-two-fifths">
     <p class="is-size-3">{{dataSource.strMeal}}</p>
     <div class="columns">
-      <div class="column">Category</div>
-      <div class="column"><a class="button is-warning is-small" href="/recipes?category={{dataSource.strCategory}}">{{dataSource.strCategory}}</a></div>
+      <div class="column category-column">Category</div>
+      <div class="column category-column"><a class="button is-warning is-small" href="/recipes?category={{dataSource.strCategory}}">{{dataSource.strCategory}}</a></div>
     </div>
     <p>{{dataSource.strInstructions}}</p>
  </div>
- <div class="column"></div>
+ <div class="column empty-column"></div>
 </div>
