@@ -1,27 +1,18 @@
-# MeNU
+# Me-N-U [September 2019]
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.4.
+Small application to display recipes made with using Angular 6 and public API from website: https://www.themealdb.com/
 
-## Development server
+## Link to demo of application (can take 30 seconds to re-run on Heroku)
+https://menu-palprz.herokuapp.com/recipes
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Technologies:
+- HTML
+- LESS
+- Angular 6
 
-## Code scaffolding
+## How to run
+- You should already have installed `npm` and `Angular 6` (please check `package.json` file to see more details)
+- Run command from the root: `ng serve`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Where the name of app came from?
+Name of the application `Me-N-U` came from one of the episodes of The Big Bang Theory.
