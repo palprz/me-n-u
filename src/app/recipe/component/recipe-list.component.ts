@@ -12,21 +12,19 @@ import { SimpleRecipe } from '../simple-recipe';
 export class RecipeListComponent implements OnInit {
     dataSource: string | any[];
     responseMessage: string;
-    // At the beginning, we don't want to show "no results found" message
     isEmptyList = false;
 
     ngOnInit() {
-      const category: string = this.route.snapshot.queryParamMap.get('category');
-      const ingredient: string = this.route.snapshot.queryParamMap.get('ingredient');
+      var paramMap = this.route.snapshot.queryParamMap;
+      var category: string = paramMap.get('category');
+      var ingredient: string = paramMap.get('ingredient');
 
       if(category !== null) {
         this.checkRecipesByCategory(category);
-        this.responseMessage = "Found recipes for '" + category + "' category 👌";
-      }
-
-      if(ingredient !== null) {
+        this.responseMessage = category + " category ";
+      } else if(ingredient !== null) {
         this.checkRecipesByIngredient(ingredient);
-        this.responseMessage = "Found recipes for '" + ingredient + "' ingredient 👌";
+        this.responseMessage = ingredient + " ingredient ";
       }
     }
 
@@ -48,9 +46,6 @@ export class RecipeListComponent implements OnInit {
     provideResponse(recipes: SimpleRecipe[]) {
       this.dataSource = recipes;
       this.isEmptyList = this.dataSource.length === 0;
-      if(this.isEmptyList) {
-        this.responseMessage = "";
-      }
     }
 
 }

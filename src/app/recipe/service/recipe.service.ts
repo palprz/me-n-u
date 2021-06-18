@@ -24,15 +24,15 @@ export class RecipeService {
             return null;
           }
 
-          for (const key of Object.keys(data["meals"])) {
-            const ingredientArray: Ingredient[] = [];
+          for (var key of Object.keys(data["meals"])) {
+            var ingredientArray: Ingredient[] = [];
             for (var i=1; i <= 20; i++) {
               var strIngredient = data["meals"][key]["strIngredient" + i];
               var strMeasure = data["meals"][key]["strMeasure" + i];
               console.log(strIngredient);
               if((strIngredient === null || strIngredient.length != 0)
                   && (strMeasure === null || strMeasure.length != 0)) {
-                  const ingredient: Ingredient = new Ingredient(
+                    var ingredient: Ingredient = new Ingredient(
                     strIngredient,
                     strMeasure
                   );
@@ -41,7 +41,7 @@ export class RecipeService {
               }
             }
 
-            const recipe: Recipe = new Recipe(
+            var recipe: Recipe = new Recipe(
                 data["meals"][key]["strMeal"],
                 data["meals"][key]["strMealThumb"],
                 data["meals"][key]["idMeal"],
@@ -58,7 +58,7 @@ export class RecipeService {
   }
 
   loadRecipeByIngredient(ingredient: String): Observable<SimpleRecipe[]> {
-      const recipeArray: SimpleRecipe[] = [];
+    var recipeArray: SimpleRecipe[] = [];
 
       return this.http.get('https://www.themealdb.com/api/json/v1/1/filter.php?i=' + ingredient).pipe(
         map(data => {
@@ -68,8 +68,8 @@ export class RecipeService {
             return recipeArray;
           }
 
-          for (const key of Object.keys(data["meals"])) {
-              const recipe: SimpleRecipe = new SimpleRecipe(
+          for (var key of Object.keys(data["meals"])) {
+            var recipe: SimpleRecipe = new SimpleRecipe(
                   data["meals"][key]["strMeal"],
                   data["meals"][key]["strMealThumb"],
                   data["meals"][key]["idMeal"]
@@ -83,7 +83,7 @@ export class RecipeService {
   }
 
   loadRecipeByCategory(category: String): Observable<SimpleRecipe[]> {
-      const recipeArray: SimpleRecipe[] = [];
+    var recipeArray: SimpleRecipe[] = [];
 
       return this.http.get('https://www.themealdb.com/api/json/v1/1/filter.php?c=' + category).pipe(
         map(data => {
@@ -93,8 +93,8 @@ export class RecipeService {
             return recipeArray;
           }
 
-          for (const key of Object.keys(data["meals"])) {
-              const recipe: SimpleRecipe = new SimpleRecipe(
+          for (var key of Object.keys(data["meals"])) {
+            var recipe: SimpleRecipe = new SimpleRecipe(
                   data["meals"][key]["strMeal"],
                   data["meals"][key]["strMealThumb"],
                   data["meals"][key]["idMeal"]
