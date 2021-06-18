@@ -8,6 +8,10 @@ import { SimpleRecipe } from '../simple-recipe';
 import { Recipe } from '../recipe';
 import { Ingredient } from '../ingredient';
 
+const THE_MEAL_DB: string = "https://www.themealdb.com";
+const LOOKUP_PATH: string = "/api/json/v1/1/lookup.php";
+const FILTER_PATH: string = "/api/json/v1/1/filter.php";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,95 +20,89 @@ export class RecipeService {
   constructor(private http: HttpClient) { }
 
   loadRecipeById(id: String): Observable<Recipe> {
-      return this.http.get('https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + id).pipe(
+      return this.http.get(THE_MEAL_DB + LOOKUP_PATH + "?i=" + id).pipe(
         map(data => {
-
           if(data["meals"] === null) {
             // Found no result
             return null;
           }
-
-          for (var key of Object.keys(data["meals"])) {
-            var ingredientArray: Ingredient[] = [];
-            for (var i=1; i <= 20; i++) {
-              var strIngredient = data["meals"][key]["strIngredient" + i];
-              var strMeasure = data["meals"][key]["strMeasure" + i];
-              console.log(strIngredient);
-              if((strIngredient === null || strIngredient.length != 0)
-                  && (strMeasure === null || strMeasure.length != 0)) {
-                    var ingredient: Ingredient = new Ingredient(
-                    strIngredient,
-                    strMeasure
-                  );
-
-                ingredientArray.push(ingredient);
-              }
-            }
-
-            var recipe: Recipe = new Recipe(
-                data["meals"][key]["strMeal"],
-                data["meals"][key]["strMealThumb"],
-                data["meals"][key]["idMeal"],
-                data["meals"][key]["strCategory"],
-                data["meals"][key]["strArea"],
-                data["meals"][key]["strInstructions"],
-                ingredientArray
-            );
-
-            return recipe;
-          }
+          var ingredients: Ingredient[] = this.convertIngredients(data);
+          return this.convertRecipe(data, ingredients);
         })
       );
   }
 
   loadRecipesByIngredient(ingredient: String): Observable<SimpleRecipe[]> {
-    var recipeArray: SimpleRecipe[] = [];
-
-      return this.http.get('https://www.themealdb.com/api/json/v1/1/filter.php?i=' + ingredient).pipe(
+      return this.http.get(THE_MEAL_DB + FILTER_PATH + "?i=" + ingredient).pipe(
         map(data => {
-
           if(data["meals"] === null) {
             // Found no results
-            return recipeArray;
+            return [];
           }
-
-          for (var key of Object.keys(data["meals"])) {
-            var recipe: SimpleRecipe = new SimpleRecipe(
-                  data["meals"][key]["strMeal"],
-                  data["meals"][key]["strMealThumb"],
-                  data["meals"][key]["idMeal"]
-              );
-              recipeArray.push(recipe);
-          }
-
-          return recipeArray;
+          return this.convertSimpleRecipes(data);
         })
       );
   }
 
   loadRecipesByCategory(category: String): Observable<SimpleRecipe[]> {
-    var recipeArray: SimpleRecipe[] = [];
-
-      return this.http.get('https://www.themealdb.com/api/json/v1/1/filter.php?c=' + category).pipe(
+      return this.http.get(THE_MEAL_DB + FILTER_PATH + "?c=" + category).pipe(
         map(data => {
-
           if(data["meals"] === null) {
             // Found no results
-            return recipeArray;
+            return [];
           }
-
-          for (var key of Object.keys(data["meals"])) {
-            var recipe: SimpleRecipe = new SimpleRecipe(
-                  data["meals"][key]["strMeal"],
-                  data["meals"][key]["strMealThumb"],
-                  data["meals"][key]["idMeal"]
-              );
-              recipeArray.push(recipe);
-          }
-
-          return recipeArray;
+          return this.convertSimpleRecipes(data);
         })
       );
+  }
+
+  convertRecipe(data: Object, ingredientArray: Ingredient[]): Recipe {
+    var meal = data["meals"][0];
+      return new Recipe(
+        meal["strMeal"],
+        meal["strMealThumb"],
+        meal["idMeal"],
+        meal["strCategory"],
+        meal["strArea"],
+        meal["strInstructions"],
+        ingredientArray
+    );
+  }
+
+  convertSimpleRecipes(data: Object): SimpleRecipe[] {
+    var recipes: SimpleRecipe[] = [];
+
+    for (var key of Object.keys(data["meals"])) {
+      var meal = data["meals"][key];
+      var recipe: SimpleRecipe = new SimpleRecipe(
+          meal["strMeal"],
+          meal["strMealThumb"],
+          meal["idMeal"]
+        );
+        recipes.push(recipe);
+    }
+    return recipes;
+  }
+
+  convertIngredients(data: Object): Ingredient[] {
+    var ingredients: Ingredient[] = [];
+    var meal = data["meals"][0];
+    for (var i=1; i <= 20; i++) {
+      var strIngredient = meal["strIngredient" + i];
+      var strMeasure = meal["strMeasure" + i];
+      console.log(strIngredient);
+      if((strIngredient === null || strIngredient.length != 0)
+          && (strMeasure === null || strMeasure.length != 0)) {
+            var ingredient: Ingredient = new Ingredient(
+            strIngredient,
+            strMeasure
+          );
+
+        ingredients.push(ingredient);
+      }
+    }
+
+    return ingredients;
   }
 
 }
