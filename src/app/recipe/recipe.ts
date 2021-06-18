@@ -9,8 +9,8 @@ export class Recipe {
   strInstructions: string;
   ingredients: Ingredient[]
 
-  constructor(strMeal, strMealThumb, idMeal, strCategory,
-    strArea, strInstructions, ingredients) {
+  constructor(strMeal: string, strMealThumb: string, idMeal: string, strCategory: string,
+    strArea: string, strInstructions: string, ingredients: Ingredient[]) {
     this.strMeal = strMeal;
     this.strMealThumb = strMealThumb;
     this.idMeal = idMeal;

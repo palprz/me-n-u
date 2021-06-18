@@ -1,4 +1,4 @@
-# Me-N-U [September 2019 - refreshed in June 2021]
+# Me'N'U [September 2019 - refreshed in June 2021]
 
 Small application to display recipes made with using Angular 12 and public API from website: https://www.themealdb.com/
 
@@ -16,4 +16,4 @@ Project require installed `npm` and `Angular` version 12.
 - Open browser with URL `localhost:4200`
 
 ## Where the name of app came from?
-Name of the application `Me-N-U` came from one of the episodes of The Big Bang Theory.
+Name of the application `Me'N'U` came from one of the episodes of The Big Bang Theory.

@@ -6,7 +6,8 @@
   <div class="tile is-parent recipe-tiles">
     <div class="tile is-child is-3 recipe-tile" *ngFor="let recipe of dataSource">
       <div><a href="/recipe?recipeId={{recipe.idMeal}}"><img src="{{recipe.strMealThumb}}" alt="Recipe image"></a></div>
-      <div><a class="button is-link is-outlined recipe-link" href="/recipe?recipeId={{recipe.idMeal}}">{{recipe.strMeal}}</a></div>
+      <div><a class="button is-link is-outlined recipe-link"
+          href="/recipe?recipeId={{recipe.idMeal}}">{{recipe.strMeal}}</a></div>
     </div>
   </div>
 </div>

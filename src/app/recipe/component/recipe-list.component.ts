@@ -10,8 +10,8 @@ import { SimpleRecipe } from '../simple-recipe';
   styleUrls: ['./recipe-list.component.less']
 })
 export class RecipeListComponent implements OnInit {
-    dataSource;
-    responseMessage;
+    dataSource: string | any[];
+    responseMessage: string;
     // At the beginning, we don't want to show "no results found" message
     isEmptyList = false;
 

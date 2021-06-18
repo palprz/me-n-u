@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Recipe } from '../recipe';
 
 import { RecipeService } from '../service/recipe.service';
+import { SimpleRecipe } from '../simple-recipe';
 
 @Component({
   selector: 'app-recipe',
@@ -9,7 +11,7 @@ import { RecipeService } from '../service/recipe.service';
   styleUrls: ['./recipe.component.less']
 })
 export class RecipeComponent implements OnInit {
-  dataSource;
+  dataSource: SimpleRecipe[] | Recipe;
   loadedRecipe = false;
 
   constructor(private route: ActivatedRoute, private recipeService: RecipeService) { }
