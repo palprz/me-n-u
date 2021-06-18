@@ -26,7 +26,7 @@ export class RecipeComponent implements OnInit {
   }
 
   checkRecipesByCategory(event: any) {
-    this.recipeService.loadRecipeByCategory(event.target.attributes.id.value).subscribe( recipes => {
+    this.recipeService.loadRecipesByCategory(event.target.attributes.id.value).subscribe( recipes => {
       this.dataSource = recipes;
     });
   }

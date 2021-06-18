@@ -57,7 +57,7 @@ export class RecipeService {
       );
   }
 
-  loadRecipeByIngredient(ingredient: String): Observable<SimpleRecipe[]> {
+  loadRecipesByIngredient(ingredient: String): Observable<SimpleRecipe[]> {
     var recipeArray: SimpleRecipe[] = [];
 
       return this.http.get('https://www.themealdb.com/api/json/v1/1/filter.php?i=' + ingredient).pipe(
@@ -82,7 +82,7 @@ export class RecipeService {
       );
   }
 
-  loadRecipeByCategory(category: String): Observable<SimpleRecipe[]> {
+  loadRecipesByCategory(category: String): Observable<SimpleRecipe[]> {
     var recipeArray: SimpleRecipe[] = [];
 
       return this.http.get('https://www.themealdb.com/api/json/v1/1/filter.php?c=' + category).pipe(

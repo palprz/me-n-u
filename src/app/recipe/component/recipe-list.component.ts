@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { RecipeService } from '../service/recipe.service';
 import { SimpleRecipe } from '../simple-recipe';
+import { CategoryName, getCategory } from '../category-names';
 
 @Component({
   selector: 'app-recipe-list',
@@ -12,35 +13,37 @@ import { SimpleRecipe } from '../simple-recipe';
 export class RecipeListComponent implements OnInit {
     dataSource: string | any[];
     responseMessage: string;
-    isEmptyList = false;
+    isEmptyList = true;
+    isSearching = true;
 
     ngOnInit() {
       var paramMap = this.route.snapshot.queryParamMap;
-      var category: string = paramMap.get('category');
-      var ingredient: string = paramMap.get('ingredient');
+      var filter: string = paramMap.get('filter');
+      var value: string = paramMap.get('value');
 
-      if(category !== null) {
-        this.checkRecipesByCategory(category);
-        this.responseMessage = category + " category ";
-      } else if(ingredient !== null) {
-        this.checkRecipesByIngredient(ingredient);
-        this.responseMessage = ingredient + " ingredient ";
-      }
+      this.fetchRecipesByFilter(getCategory(filter), value);
     }
 
     constructor(private route: ActivatedRoute, private recipeService: RecipeService) {
     }
 
-    checkRecipesByIngredient(ingredient: String) {
-      this.recipeService.loadRecipeByIngredient(ingredient).subscribe( recipes => {
-        this.provideResponse(recipes);
-      });
-    }
+    fetchRecipesByFilter(filter: String, value: String) {
+      switch(filter) {
+        case CategoryName.INGREDIENT:
+          this.recipeService.loadRecipesByIngredient(value).subscribe( recipes => {
+            this.provideResponse(recipes);
+          });
+          break;
+        case CategoryName.CATEGORY: 
+        this.recipeService.loadRecipesByCategory(value).subscribe( recipes => {
+          this.provideResponse(recipes);
+        });
+          break;
+        default:
+          this.isSearching = false;
+          break;
+      }
 
-    checkRecipesByCategory(category: String) {
-      this.recipeService.loadRecipeByCategory(category).subscribe( recipes => {
-        this.provideResponse(recipes);
-      });
     }
 
     provideResponse(recipes: SimpleRecipe[]) {

@@ -1,20 +1,28 @@
-<div *ngIf="isEmptyList" class="has-text-centered">
-  <p class="is-size-4">Sorry, no recipes found 😔</p>
-  <p class="is-size-3"> ❌🍗❌</p>
+<div *ngIf="!isSearching">
+  <div class="has-text-centered">
+    TODO basic info of that application
+  </div>
 </div>
 
-<div *ngIf="!isEmptyList">
-  <div class="has-text-centered">
-    <p class="is-size-4">Found recipes with {{responseMessage}} 👌</p>
+<div *ngIf="isSearching">
+  <div *ngIf="isEmptyList" class="has-text-centered">
+    <p class="is-size-4">Sorry, no recipes found 😔</p>
+    <p class="is-size-3"> ❌🍗❌</p>
   </div>
 
-  <div class="tile is-ancestor">
-    <div class="tile is-parent recipe-tiles">
-      <div class="tile is-child is-3 recipe-tile" *ngFor="let recipe of dataSource">
-        <div><a href="/recipe?recipeId={{recipe.idMeal}}"><img src="{{recipe.strMealThumb}}" alt="Recipe image"></a>
+  <div *ngIf="!isEmptyList">
+    <div class="has-text-centered">
+      <p class="is-size-4">Found recipes with {{responseMessage}} 👌</p>
+    </div>
+
+    <div class="tile is-ancestor">
+      <div class="tile is-parent recipe-tiles">
+        <div class="tile is-child is-3 recipe-tile" *ngFor="let recipe of dataSource">
+          <div><a href="/recipe?recipeId={{recipe.idMeal}}"><img src="{{recipe.strMealThumb}}" alt="Recipe image"></a>
+          </div>
+          <div><a class="button is-link is-outlined recipe-link"
+              href="/recipe?recipeId={{recipe.idMeal}}">{{recipe.strMeal}}</a></div>
         </div>
-        <div><a class="button is-link is-outlined recipe-link"
-            href="/recipe?recipeId={{recipe.idMeal}}">{{recipe.strMeal}}</a></div>
       </div>
     </div>
   </div>

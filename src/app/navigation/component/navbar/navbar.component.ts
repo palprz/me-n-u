@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { Router } from '@angular/router'
+import { CategoryName } from '../../../recipe/category-names';
 
 @Component({
   selector: 'app-navbar',
@@ -16,11 +16,15 @@ export class NavbarComponent {
       var ingredientFlag = this.ingredientFlagInput.nativeElement.checked;
       var categoryFlag = this.categoryFlagInput.nativeElement.checked;
 
+      var filter: string;
+      var value: string = this.valueInput.nativeElement.value;
       if(ingredientFlag) {
-        this.redirectUrl = "/recipes?ingredient=" + this.valueInput.nativeElement.value;
+        filter = CategoryName.INGREDIENT;
       } else if(categoryFlag) {
-        this.redirectUrl = "/recipes?category=" + this.valueInput.nativeElement.value;
+        filter = CategoryName.CATEGORY;
       }
+
+      this.redirectUrl = "/recipes?filter=" + filter + "&value=" + value;
     }
 
 }
