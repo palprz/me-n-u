@@ -8,5 +8,4 @@ export class SimpleRecipe {
     this.strMealThumb = strMealThumb;
     this.idMeal = idMeal;
   }
-
 }

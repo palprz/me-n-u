@@ -1,4 +1,4 @@
-import { Ingredient } from './ingredient';
+import { Ingredient } from "./ingredient";
 
 export class Recipe {
   strMeal: string;
@@ -7,10 +7,17 @@ export class Recipe {
   strCategory: string;
   strArea: string;
   strInstructions: string;
-  ingredients: Ingredient[]
+  ingredients: Ingredient[];
 
-  constructor(strMeal: string, strMealThumb: string, idMeal: string, strCategory: string,
-    strArea: string, strInstructions: string, ingredients: Ingredient[]) {
+  constructor(
+    strMeal: string,
+    strMealThumb: string,
+    idMeal: string,
+    strCategory: string,
+    strArea: string,
+    strInstructions: string,
+    ingredients: Ingredient[]
+  ) {
     this.strMeal = strMeal;
     this.strMealThumb = strMealThumb;
     this.idMeal = idMeal;
@@ -19,5 +26,4 @@ export class Recipe {
     this.strInstructions = strInstructions;
     this.ingredients = ingredients;
   }
-
 }

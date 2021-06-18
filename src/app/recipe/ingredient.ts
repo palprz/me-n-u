@@ -6,5 +6,4 @@ export class Ingredient {
     this.name = name;
     this.measure = measure;
   }
-
 }
