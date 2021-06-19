@@ -1,14 +1,14 @@
-import { AppPage } from './app.po';
+import { AppPage } from "./app.po";
 
-describe('workspace-project App', () => {
+describe("Front page check", () => {
   let page: AppPage;
 
   beforeEach(() => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it("should display name of the app", () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to me-n-u!');
+    expect(page.getParagraphText()).toEqual("Me'N'U");
   });
 });

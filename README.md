@@ -10,18 +10,27 @@ https://menu-palprz.herokuapp.com/recipes
 - HTML
 - LESS
 - Angular 12
+- for testing: Karma, Jasmine, Protraktor 
 
-## How to run application
-Project require installed `npm` and `Angular` version 12.
+### How to run application
+Project requires to have installed `npm` and `Angular` version 12.
 - Go to the root of this project
 - Install dependencies: `npm install`
 - Run server: `ng serve`
 - Open browser with URL `localhost:4200` to see running application
 
-## How to run tests
-Project require installed `npm` and `Angular` version 12.
+### How to run unit tests
+Project requires to have installed `npm` and `Angular` version 12.
 - Go to the root of this project
 - Run tests: `ng test`
+
+### How to run e2e tests
+Project requires to have installed `npm` and `Angular` version 12.
+- Run selenium grid `webdriver-manager start`
+- Install dependencies: `npm install`
+- Run server: `ng serve`
+- Run protractor: `protractor protractor.conf.js`
+
 
 ## Where the name of app came from?
 Name of the application `Me'N'U` (pronounce: "me and you") came from one of the episodes of The Big Bang Theory.
