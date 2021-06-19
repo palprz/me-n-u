@@ -3,7 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { Recipe } from "../recipe";
 
 import { RecipeService } from "../service/recipe.service";
-import { SimpleRecipe } from "../simple-recipe";
+import { SimpleRef } from "../simple-recipe";
 
 @Component({
   selector: "app-recipe",
@@ -11,7 +11,7 @@ import { SimpleRecipe } from "../simple-recipe";
   styleUrls: ["./recipe.component.less"],
 })
 export class RecipeComponent implements OnInit {
-  dataSource: SimpleRecipe[] | Recipe;
+  dataSource: SimpleRef[] | Recipe;
   loadedRecipe = false;
 
   constructor(

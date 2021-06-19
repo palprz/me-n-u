@@ -1,4 +1,4 @@
-export class SimpleRecipe {
+export class SimpleRef {
   strMeal: string;
   strMealThumb: string;
   idMeal: string;

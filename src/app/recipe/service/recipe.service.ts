@@ -4,7 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
-import { SimpleRecipe } from "../simple-recipe";
+import { SimpleRef } from "../simple-recipe";
 import { Recipe } from "../recipe";
 import { Ingredient } from "../ingredient";
 
@@ -31,31 +31,31 @@ export class RecipeService {
     );
   }
 
-  loadRecipesByIngredient(ingredient: String): Observable<SimpleRecipe[]> {
+  loadRecipesByIngredient(ingredient: String): Observable<SimpleRef[]> {
     return this.http.get(THE_MEAL_DB + FILTER_PATH + "?i=" + ingredient).pipe(
       map((data) => {
         if (data["meals"] === null) {
           // Found no results
           return [];
         }
-        return this.convertSimpleRecipes(data);
+        return this.convertSimpleRefs(data);
       })
     );
   }
 
-  loadRecipesByCategory(category: String): Observable<SimpleRecipe[]> {
+  loadRecipesByCategory(category: String): Observable<SimpleRef[]> {
     return this.http.get(THE_MEAL_DB + FILTER_PATH + "?c=" + category).pipe(
       map((data) => {
         if (data["meals"] === null) {
           // Found no results
           return [];
         }
-        return this.convertSimpleRecipes(data);
+        return this.convertSimpleRefs(data);
       })
     );
   }
 
-  convertRecipe(data: Object, ingredientArray: Ingredient[]): Recipe {
+  private convertRecipe(data: Object, ingredients: Ingredient[]): Recipe {
     var meal = data["meals"][0];
     return new Recipe(
       meal["strMeal"],
@@ -64,16 +64,16 @@ export class RecipeService {
       meal["strCategory"],
       meal["strArea"],
       meal["strInstructions"],
-      ingredientArray
+      ingredients
     );
   }
 
-  convertSimpleRecipes(data: Object): SimpleRecipe[] {
-    var recipes: SimpleRecipe[] = [];
+  private convertSimpleRefs(data: Object): SimpleRef[] {
+    var recipes: SimpleRef[] = [];
 
     for (var key of Object.keys(data["meals"])) {
       var meal = data["meals"][key];
-      var recipe: SimpleRecipe = new SimpleRecipe(
+      var recipe: SimpleRef = new SimpleRef(
         meal["strMeal"],
         meal["strMealThumb"],
         meal["idMeal"]
@@ -83,7 +83,7 @@ export class RecipeService {
     return recipes;
   }
 
-  convertIngredients(data: Object): Ingredient[] {
+  private convertIngredients(data: Object): Ingredient[] {
     var ingredients: Ingredient[] = [];
     var meal = data["meals"][0];
     for (var i = 1; i <= 20; i++) {
