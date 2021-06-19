@@ -26,10 +26,11 @@ Project requires to have installed `npm` and `Angular` version 12.
 
 ### How to run e2e tests
 Project requires to have installed `npm` and `Angular` version 12.
-- Run selenium grid `webdriver-manager start`
+- Go to the root of this project
 - Install dependencies: `npm install`
 - Run server: `ng serve`
-- Run protractor: `protractor protractor.conf.js`
+- Run selenium grid `webdriver-manager start`
+- Run protractor: `protractor e2e/protractor.conf.js`
 
 
 ## Where the name of app came from?

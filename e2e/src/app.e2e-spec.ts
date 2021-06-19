@@ -5,10 +5,20 @@ describe("Front page check", () => {
 
   beforeEach(() => {
     page = new AppPage();
+    page.navigateTo();
   });
 
   it("should display name of the app", () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual("Me'N'U");
+    expect(page.getTitleText()).toEqual("Me'N'U");
+  });
+
+  it("should display properly search button", () => {
+    expect(page.getSearchButtonText()).toEqual("Search recipes, quick!");
+  });
+
+  it("should display search filters", () => {
+    expect(page.getSearchFiltersText()).toEqual(
+      "Search by ingredient category"
+    );
   });
 });

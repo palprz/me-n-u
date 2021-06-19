@@ -5,8 +5,15 @@ export class AppPage {
     return browser.get("/");
   }
 
-  getParagraphText() {
-    // return element(by.css('app-root h1')).getText();
-    return element(by.css("app-root app-navbar div a")).getText();
+  getTitleText() {
+    return element(by.css("app-root app-navbar #title")).getText();
+  }
+
+  getSearchButtonText() {
+    return element(by.css("app-root app-navbar #searchBtn")).getText();
+  }
+
+  getSearchFiltersText() {
+    return element(by.css("app-root app-navbar #searchFilters")).getText();
   }
 }

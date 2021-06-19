@@ -3,7 +3,7 @@
     <div class="columns">
       <div class="column is-one-fifth">
         <div class="is-italic is-pulled-right">
-          <a class="button is-info is-family-secondary" href="/recipes">Me'N'U</a>
+          <a id="title" class="button is-info is-family-secondary" href="/recipes">Me'N'U</a>
         </div>
       </div>
       <div class="column">
@@ -12,7 +12,7 @@
         </div>
       </div>
       <div class="column is-one-fifth">
-        <a href="{{redirectUrl}}" class="button is-primary is-fullwidth" (click)="checkRecipes()">Search recipes,
+        <a id="searchBtn" href="{{redirectUrl}}" class="button is-primary is-fullwidth" (click)="checkRecipes()">Search recipes,
           quick!</a>
       </div>
     </div>
@@ -20,7 +20,7 @@
     <div class="columns" style="margin-top: -35px;">
       <div class="column is-one-fifth"></div>
       <div class="column">
-        <div class="control">
+        <div id="searchFilters" class="control">
           Search by
           <label class="radio">
             <input #ingredientFlag type="radio" name="answer" checked>
