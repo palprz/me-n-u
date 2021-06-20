@@ -32,7 +32,9 @@ describe("Search function", () => {
     pageClick.clickSearchButton();
     expect(pageVisibility.isFoundRecipeMessagePresent()).toEqual(false);
     expect(pageVisibility.isFoundNoRecipeMessagePresent()).toEqual(true);
-    expect(pageText.getNoFoundRecipeMessage()).toEqual("Sorry, found no recipe 😔");
+    expect(pageText.getNoFoundRecipeMessage()).toEqual(
+      "Sorry, found no recipe for invalid-search-value ingredient 😔"
+    );
   });
 
   it("find some recipes with provided ingredient", () => {
@@ -41,7 +43,6 @@ describe("Search function", () => {
     pageClick.clickSearchButton();
     expect(pageVisibility.isFoundRecipeMessagePresent()).toEqual(true);
     expect(pageVisibility.isFoundNoRecipeMessagePresent()).toEqual(false);
-    expect(pageText.getFoundRecipeMessage()).toEqual("Found recipes with 👌");
+    expect(pageText.getFoundRecipeMessage()).toEqual("Found recipes with for chicken ingredient 👌");
   });
-
 });

@@ -6,13 +6,14 @@
 
 <div *ngIf="isSearching">
   <div *ngIf="isEmptyList" class="has-text-centered">
-    <p id="found-no-recipe" class="is-size-4">Sorry, found no recipe 😔</p>
-    <p class="is-size-3"> ❌🍗❌</p>
+    <p id="found-no-recipe" class="is-size-4">Sorry, found no recipe for <strong>{{value}}</strong> {{filter}} 😔 </p>
+    <p class="is-size-3">❌🍗❌</p>
   </div>
 
   <div *ngIf="!isEmptyList">
     <div class="has-text-centered">
-      <p id="found-recipe" class="is-size-4">Found recipes with {{responseMessage}} 👌</p>
+      <p id="found-recipe" class="is-size-4">Found recipes with {{responseMessage}} for <strong>{{value}}</strong>
+        {{filter}} 👌</p>
     </div>
 
     <div class="tile is-ancestor">

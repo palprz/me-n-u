@@ -13,15 +13,17 @@ import { CategoryName, getCategory } from "../category-names";
 export class RecipeListComponent implements OnInit {
   dataSource: string | any[];
   responseMessage: string;
+  filter: string;
+  value: string;
   isEmptyList = true;
   isSearching = true;
 
   ngOnInit() {
     var paramMap = this.route.snapshot.queryParamMap;
-    var filter: string = paramMap.get("filter");
-    var value: string = paramMap.get("value");
+    this.value = paramMap.get("value");
+    this.filter = paramMap.get("filter");
 
-    this.fetchRecipesByFilter(getCategory(filter), value);
+    this.fetchRecipesByFilter(getCategory(this.filter), this.value);
   }
 
   constructor(
