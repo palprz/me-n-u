@@ -3,14 +3,14 @@ import { ActivatedRoute } from "@angular/router";
 
 import { RecipeService } from "../service/recipe.service";
 import { SimpleRef } from "../simple-recipe";
-import { CategoryName, getCategory } from "../category-names";
+import { CategoryName } from "../category-names";
 
 @Component({
   selector: "app-recipe-list",
   templateUrl: "./recipe-list.component.html",
   styleUrls: ["./recipe-list.component.less"],
 })
-export class RecipeListComponent implements OnInit {
+export class RecipeListComponent {
   dataSource: string | any[];
   responseMessage: string;
   filter: string;
@@ -18,18 +18,16 @@ export class RecipeListComponent implements OnInit {
   isEmptyList = true;
   isSearching = true;
 
-  ngOnInit() {
-    var paramMap = this.route.snapshot.queryParamMap;
-    this.value = paramMap.get("value");
-    this.filter = paramMap.get("filter");
-
-    this.fetchRecipesByFilter(getCategory(this.filter), this.value);
-  }
-
   constructor(
     private route: ActivatedRoute,
     private recipeService: RecipeService
-  ) {}
+  ) {
+    this.route.params.subscribe((params) => {
+      this.filter = params.filter;
+      this.value = params.value;
+      this.fetchRecipesByFilter(this.filter, this.value);
+    });
+  }
 
   fetchRecipesByFilter(filter: String, value: String) {
     switch (filter) {

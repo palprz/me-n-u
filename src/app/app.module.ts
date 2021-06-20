@@ -6,7 +6,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { RecipeComponent } from "./recipe/component/recipe.component";
 import { RecipeListComponent } from "./recipe/component/recipe-list.component";
-import { NavbarComponent } from "./navigation/component/navbar/navbar.component";
+import { NavbarComponent } from "./navbar/component/navbar.component";
 
 @NgModule({
   declarations: [

@@ -1,5 +1,6 @@
 import { Component, ViewChild, ElementRef } from "@angular/core";
-import { CategoryName } from "../../../recipe/category-names";
+import { CategoryName } from "../../recipe/category-names";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-navbar",
@@ -13,18 +14,25 @@ export class NavbarComponent {
   @ViewChild("categoryFlag", { static: true }) categoryFlagInput: ElementRef;
   redirectUrl: string;
 
+  constructor(private router: Router) {}
+
+  tryCheckRecipes(e) {
+    this.checkRecipes();
+  }
+
   checkRecipes() {
     var ingredientFlag = this.ingredientFlagInput.nativeElement.checked;
     var categoryFlag = this.categoryFlagInput.nativeElement.checked;
 
     var filter: string;
     var value: string = this.valueInput.nativeElement.value;
+
     if (ingredientFlag) {
       filter = CategoryName.INGREDIENT;
     } else if (categoryFlag) {
       filter = CategoryName.CATEGORY;
     }
 
-    this.redirectUrl = "/recipes?filter=" + filter + "&value=" + value;
+    this.router.navigate(["recipes", filter, value]);
   }
 }

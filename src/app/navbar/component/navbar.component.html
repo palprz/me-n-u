@@ -3,18 +3,20 @@
     <div class="columns">
       <div class="column is-one-fifth">
         <div class="is-italic is-pulled-right">
-          <a id="app-title" class="button is-info is-family-secondary" href="/recipes">Me'N'U</a>
+          <a id="app-title" class="button is-info is-family-secondary" href="/">Me'N'U</a>
         </div>
       </div>
       <div class="column">
         <div class="control">
-          <input id="search-value" #valueInput class="input" type="text" placeholder="search...">
+          <form>
+            <input id="search-value" #valueInput class="input" type="text" placeholder="search..."
+              (keydown.enter)="tryCheckRecipes($event)">
+          </form>
         </div>
       </div>
       <div class="column is-one-fifth">
-        <a id="search-btn" href="{{redirectUrl}}" class="button is-primary is-fullwidth" (click)="checkRecipes()">Search
-          recipes,
-          quick!</a>
+        <button id="search-btn" (click)="checkRecipes()" class="button is-primary is-fullwidth">Search recipes,
+          quick!</button>
       </div>
     </div>
 
