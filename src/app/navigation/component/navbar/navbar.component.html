@@ -3,16 +3,16 @@
     <div class="columns">
       <div class="column is-one-fifth">
         <div class="is-italic is-pulled-right">
-          <a id="title" class="button is-info is-family-secondary" href="/recipes">Me'N'U</a>
+          <a id="app-title" class="button is-info is-family-secondary" href="/recipes">Me'N'U</a>
         </div>
       </div>
       <div class="column">
         <div class="control">
-          <input #valueInput class="input" type="text" placeholder="search...">
+          <input id="search-value" #valueInput class="input" type="text" placeholder="search...">
         </div>
       </div>
       <div class="column is-one-fifth">
-        <a id="searchBtn" href="{{redirectUrl}}" class="button is-primary is-fullwidth" (click)="checkRecipes()">Search recipes,
+        <a id="search-btn" href="{{redirectUrl}}" class="button is-primary is-fullwidth" (click)="checkRecipes()">Search recipes,
           quick!</a>
       </div>
     </div>
@@ -20,14 +20,14 @@
     <div class="columns" style="margin-top: -35px;">
       <div class="column is-one-fifth"></div>
       <div class="column">
-        <div id="searchFilters" class="control">
+        <div id="search-filters" class="control">
           Search by
           <label class="radio">
-            <input #ingredientFlag type="radio" name="answer" checked>
+            <input id="ingredient-filter" #ingredientFlag type="radio" name="answer" checked>
             ingredient
           </label>
           <label class="radio">
-            <input #categoryFlag type="radio" name="answer">
+            <input id="category-filter" #categoryFlag type="radio" name="answer">
             category
           </label>
         </div>
