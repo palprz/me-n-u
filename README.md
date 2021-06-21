@@ -8,9 +8,9 @@ https://menu-palprz.herokuapp.com/recipes
 
 ## Technologies:
 - HTML
-- LESS
+- LESS (Bulma CSS framework)
 - Angular 12
-- for testing: Karma, Jasmine, Protraktor 
+- for testing: Karma, Jasmine, Protractor 
 
 ### How to run application
 Project requires to have installed `npm` and `Angular` version 12.

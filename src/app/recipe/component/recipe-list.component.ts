@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 
 import { RecipeService } from "../service/recipe.service";
@@ -11,12 +11,18 @@ import { CategoryName } from "../category-names";
   styleUrls: ["./recipe-list.component.less"],
 })
 export class RecipeListComponent {
-  dataSource: string | any[];
-  responseMessage: string;
+  recipes: string | any[];
+  recipesNumber: number;
   filter: string;
   value: string;
-  isEmptyList = true;
-  isSearching = true;
+  isEmptyList: boolean;
+  /**
+   * Because of the wait for the response from the API call,
+   * end-user can see message for empty list with recipies
+   * for a half second. We would like to hide it and display
+   * a final message after the response.
+   */
+  stillSearching = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,23 +40,24 @@ export class RecipeListComponent {
       case CategoryName.INGREDIENT:
         this.recipeService
           .loadRecipesByIngredient(value)
-          .subscribe((recipes) => {
-            this.provideResponse(recipes);
+          .subscribe((data) => {
+            this.provideResponse(data);
           });
         break;
       case CategoryName.CATEGORY:
-        this.recipeService.loadRecipesByCategory(value).subscribe((recipes) => {
-          this.provideResponse(recipes);
+        this.recipeService.loadRecipesByCategory(value).subscribe((data) => {
+          this.provideResponse(data);
         });
         break;
       default:
-        this.isSearching = false;
         break;
     }
   }
 
   provideResponse(recipes: SimpleRef[]) {
-    this.dataSource = recipes;
-    this.isEmptyList = this.dataSource.length === 0;
+    this.recipes = recipes;
+    this.recipesNumber = this.recipes.length;
+    this.isEmptyList = this.recipes.length === 0;
+    this.stillSearching = false;
   }
 }

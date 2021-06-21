@@ -1,10 +1,4 @@
-<div *ngIf="!isSearching">
-  <div class="has-text-centered">
-    TODO basic info of that application
-  </div>
-</div>
-
-<div *ngIf="isSearching">
+<div *ngIf="!stillSearching">
   <div *ngIf="isEmptyList" class="has-text-centered">
     <p id="found-no-recipe" class="is-size-4">Sorry, found no recipe for <strong>{{value}}</strong> {{filter}} 😔 </p>
     <p class="is-size-3">❌🍗❌</p>
@@ -12,13 +6,13 @@
 
   <div *ngIf="!isEmptyList">
     <div class="has-text-centered">
-      <p id="found-recipe" class="is-size-4">Found recipes with {{responseMessage}} for <strong>{{value}}</strong>
+      <p id="found-recipe" class="is-size-4">Found recipes {{recipesNumber}} for <strong>{{value}}</strong>
         {{filter}} 👌</p>
     </div>
 
     <div class="tile is-ancestor">
       <div class="tile is-parent recipe-tiles">
-        <div class="tile is-child is-3 recipe-tile" *ngFor="let recipe of dataSource">
+        <div class="tile is-child is-3 recipe-tile" *ngFor="let recipe of recipes">
           <div><a href="/recipe?recipeId={{recipe.idMeal}}"><img src="{{recipe.strMealThumb}}" alt="Recipe image"></a>
           </div>
           <div><a class="button is-link is-outlined recipe-link"
