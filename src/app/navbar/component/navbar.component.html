@@ -1,12 +1,14 @@
 <div class="has-background-info has-text-white menu-navbar">
   <div class="container is-widescreen">
     <div class="columns">
-      <div class="column is-one-fifth">
-        <div class="is-italic is-pulled-right">
-          <a id="app-title" class="button is-info is-family-secondary" href="/">Me'N'U</a>
+      <div class="column is-1"></div>
+      <div class="column is-1">
+        <div class="is-italic">
+          <a id="app-title" class="button is-info is-size-4" href="/">M e ' N ' U</a>
         </div>
       </div>
-      <div class="column">
+      <div class="column is-1"></div>
+      <div class="column is-5">
         <div class="control">
           <form>
             <input id="search-value" #valueInput class="input" type="text" placeholder="search..."
@@ -14,15 +16,19 @@
           </form>
         </div>
       </div>
-      <div class="column is-one-fifth">
+      <div class="column is-2">
         <button id="search-btn" (click)="checkRecipes()" class="button is-primary is-fullwidth">Search recipes,
           quick!</button>
       </div>
     </div>
 
-    <div class="columns" style="margin-top: -35px;">
-      <div class="column is-one-fifth"></div>
-      <div class="column">
+    <div class="columns">
+      <div class="column is-1"></div>
+      <div class="column is-2 is-size-6" id="made-by">
+        Made by <a class="has-text-warning github-link" href="https://github.com/palprz">palprz
+          <img class="github-logo" src="assets/images/GitHub-Mark-Light-32px.png"></a>
+      </div>
+      <div class="column is-4">
         <div id="search-filters" class="control">
           Search by
           <label class="radio">
@@ -34,9 +40,6 @@
             category
           </label>
         </div>
-      </div>
-      <div class="column is-one-fifth is-size-7">
-        Made by <a class="has-text-warning github-link" href="https://github.com/palprz">Przemyslaw Paluch</a>
       </div>
     </div>
   </div>
