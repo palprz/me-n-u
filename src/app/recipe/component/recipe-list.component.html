@@ -14,8 +14,8 @@
       <div class="tile is-parent recipe-tiles">
         <div class="tile is-child is-3 recipe-tile" *ngFor="let recipe of recipes">
           <a class="box button is-link is-outlined recipe-link" href="/recipe?recipeId={{recipe.idMeal}}">
-            <img src="{{recipe.strMealThumb}}" alt="Recipe image">
-            <p>{{recipe.strMeal}}</p>
+            <img src="{{recipe.mealThumb}}" alt="Recipe image">
+            <p>{{recipe.mealName}}</p>
           </a>
         </div>
       </div>

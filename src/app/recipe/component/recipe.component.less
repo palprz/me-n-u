@@ -1,5 +1,17 @@
 .ingredients {
-  margin-top: 20px;
+  p {
+    margin-top: 20px;
+  }
+  .columns:nth-child(even) {
+    background-color: #eee;
+  }
+}
+
+ul {
+  list-style: decimal;
+  li {
+    margin-top: 5px;
+  }
 }
 
 @media (max-width: 760px) {
@@ -19,10 +31,6 @@
   }
   .measure-column {
     width: 100px;
-    float: left;
-  }
-  .category-column {
-    width: 45%;
     float: left;
   }
 }

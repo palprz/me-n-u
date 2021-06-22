@@ -3,7 +3,6 @@ import { ActivatedRoute } from "@angular/router";
 import { Recipe } from "../recipe";
 
 import { RecipeService } from "../service/recipe.service";
-import { SimpleRef } from "../simple-recipe";
 
 @Component({
   selector: "app-recipe",
@@ -11,7 +10,7 @@ import { SimpleRef } from "../simple-recipe";
   styleUrls: ["./recipe.component.less"],
 })
 export class RecipeComponent implements OnInit {
-  dataSource: SimpleRef[] | Recipe;
+  dataSource: Recipe;
   loadedRecipe = false;
 
   constructor(
@@ -26,13 +25,5 @@ export class RecipeComponent implements OnInit {
       this.dataSource = recipe;
       this.loadedRecipe = true;
     });
-  }
-
-  checkRecipesByCategory(event: any) {
-    this.recipeService
-      .loadRecipesByCategory(event.target.attributes.id.value)
-      .subscribe((recipes) => {
-        this.dataSource = recipes;
-      });
   }
 }

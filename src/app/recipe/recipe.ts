@@ -1,29 +1,29 @@
 import { Ingredient } from "./ingredient";
 
 export class Recipe {
-  strMeal: string;
-  strMealThumb: string;
+  mealName: string;
+  mealThumb: string;
   idMeal: string;
-  strCategory: string;
-  strArea: string;
-  strInstructions: string;
+  category: string;
+  area: string;
   ingredients: Ingredient[];
+  instructions: string[];
 
   constructor(
-    strMeal: string,
-    strMealThumb: string,
+    mealName: string,
+    mealThumb: string,
     idMeal: string,
-    strCategory: string,
-    strArea: string,
-    strInstructions: string,
+    category: string,
+    area: string,
+    instructions: string[],
     ingredients: Ingredient[]
   ) {
-    this.strMeal = strMeal;
-    this.strMealThumb = strMealThumb;
+    this.mealName = mealName;
+    this.mealThumb = mealThumb;
     this.idMeal = idMeal;
-    this.strCategory = strCategory;
-    this.strArea = strArea;
-    this.strInstructions = strInstructions;
+    this.category = category;
+    this.area = area;
+    this.instructions = instructions;
     this.ingredients = ingredients;
   }
 }

@@ -63,7 +63,9 @@ export class RecipeService {
       meal["idMeal"],
       meal["strCategory"],
       meal["strArea"],
-      meal["strInstructions"],
+      // the response contains long string with no spaces or proper format - we need to fix on our side
+      // it's a silly assumption with a dot but it's working (so far...)
+      meal["strInstructions"].split("."),
       ingredients
     );
   }

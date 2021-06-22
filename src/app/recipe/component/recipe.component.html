@@ -1,23 +1,35 @@
 <div class="columns" *ngIf="loadedRecipe">
    <div class="column empty-column"></div>
-   <div class="column is-two-fifths">
-      <img src="{{dataSource.strMealThumb}}" alt="Recipe image" height="375" width="375">
-      <p class="is-size-4 ingredients">Ingredients</p>
-      <div *ngFor="let ingredient of dataSource.ingredients">
-         <div class="columns">
-            <div class="column ingredient-column">{{ingredient.name}}</div>
-            <div class="column measure-column">{{ingredient.measure}}</div>
+   <div class="column is-4 ingredients">
+      <img src="{{dataSource.mealThumb}}" alt="Recipe image" height="375" width="375">
+      <p class="is-size-4">Ingredients</p>
+      <div class="columns">
+         <div class="column is-10">
+            <div class="columns" *ngFor="let ingredient of dataSource.ingredients">
+               <div class="column is-6 ingredient-column">{{ingredient.name}}</div>
+               <div class="column is-6 measure-column">{{ingredient.measure}}</div>
+            </div>
+         </div>
+         <div class="column is-2">
          </div>
       </div>
    </div>
-   <div class="column is-two-fifths">
-      <p class="is-size-3 recipe-name">{{dataSource.strMeal}}</p>
+   <div class="column is-6">
+      <p class="is-size-3 recipe-name">{{dataSource.mealName}}</p>
       <div class="columns">
-         <div class="column category-column">Category</div>
-         <div class="column category-column"><a class="button is-warning is-small"
-               href="/recipes?category={{dataSource.strCategory}}">{{dataSource.strCategory}}</a></div>
+         <div class="column is-2">Category:</div>
+         <div class="column category"><a class="button is-warning is-small"
+               href="/recipes?category={{dataSource.category}}">{{dataSource.category}}</a></div>
       </div>
-      <p>{{dataSource.strInstructions}}</p>
+      <div class="columns">
+         <div class="column is-2">Area:</div>
+         <div class="column">{{dataSource.area}}</div>
+      </div>
+      <ul>
+         <li *ngFor="let instruction of dataSource.instructions">
+            {{instruction}}.
+         </li>
+      </ul>
    </div>
    <div class="column empty-column"></div>
 </div>

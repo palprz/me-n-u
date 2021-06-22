@@ -1,11 +1,11 @@
 export class SimpleRef {
-  strMeal: string;
-  strMealThumb: string;
+  mealName: string;
+  mealThumb: string;
   idMeal: string;
 
-  constructor(strMeal: string, strMealThumb: string, idMeal: string) {
-    this.strMeal = strMeal;
-    this.strMealThumb = strMealThumb;
+  constructor(mealName: string, mealThumb: string, idMeal: string) {
+    this.mealName = mealName;
+    this.mealThumb = mealThumb;
     this.idMeal = idMeal;
   }
 }
