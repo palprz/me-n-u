@@ -11,7 +11,7 @@ describe("Front page", () => {
   });
 
   it("display name of the app", () => {
-    expect(pageText.getTitleText()).toEqual("Me'N'U");
+    expect(pageText.getTitleText()).toEqual("M e ' N ' U");
   });
 
   it("display properly search button", () => {
@@ -21,6 +21,18 @@ describe("Front page", () => {
   it("display search filters", () => {
     expect(pageText.getSearchFiltersText()).toEqual(
       "Search by ingredient category"
+    );
+  });
+
+  it("display main content text", () => {
+    expect(pageText.getFrontPageMainText()).toContain(
+      "Me'N'U is an application to find recipes based on ingredients or category."
+    );
+    expect(pageText.getFrontPageMainText()).toContain(
+      "Find something for yourself by just sticking a phrase above 👆"
+    );
+    expect(pageText.getFrontPageMainText()).toContain(
+      "Recipes are coming from https://www.themealdb.com"
     );
   });
 });

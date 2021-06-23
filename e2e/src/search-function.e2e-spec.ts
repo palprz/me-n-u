@@ -43,6 +43,19 @@ describe("Search function", () => {
     pageClick.clickSearchButton();
     expect(pageVisibility.isFoundRecipeMessagePresent()).toEqual(true);
     expect(pageVisibility.isFoundNoRecipeMessagePresent()).toEqual(false);
-    expect(pageText.getFoundRecipeMessage()).toEqual("Found recipes with for chicken ingredient 👌");
+    expect(pageText.getFoundRecipeMessage()).toEqual(
+      "Found recipes 11 for chicken ingredient 👌"
+    );
+  });
+
+  it("recipe page contains all necessery details", () => {
+    pageClick.searchByIngredient();
+    pageClick.provideSearchValue();
+    pageClick.clickSearchButton();
+    pageClick.clickRecipeLink();
+    expect(pageText.getIngredientsSection()).toContain("Ingredients");
+    expect(pageText.getIngredientsSection()).toContain("Chicken");
+    expect(pageText.getFullContainer()).toContain("Category:");
+    expect(pageText.getFullContainer()).toContain("Area:");
   });
 });

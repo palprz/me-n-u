@@ -1,7 +1,7 @@
 import { browser, by, element } from "protractor";
 
 const NAV_BAR = "app-root app-navbar ";
-const CONTAINER = "app-root .container ";
+const MAIN_CONTENT = "app-root .main-content ";
 
 export class AppPage {
   navigateTo() {
@@ -23,37 +23,49 @@ export class PageText {
   }
 
   getNoFoundRecipeMessage() {
-    return element(by.css(CONTAINER + "#found-no-recipe")).getText();
+    return element(by.css(MAIN_CONTENT + "#found-no-recipe")).getText();
   }
 
   getFoundRecipeMessage() {
-    return element(by.css(CONTAINER + "#found-recipe")).getText();
+    return element(by.css(MAIN_CONTENT + "#found-recipe")).getText();
   }
 
   getRecipeName() {
-    return element(by.css(CONTAINER + ".recipe-name")).getText();
+    return element(by.css(MAIN_CONTENT + ".recipe-name")).getText();
+  }
+
+  getFrontPageMainText() {
+    return element(by.css(MAIN_CONTENT + ".main-text")).getText();
+  }
+
+  getIngredientsSection() {
+    return element(by.css(MAIN_CONTENT + ".ingredients")).getText();
+  }
+
+  getFullContainer() {
+    return element(by.css(MAIN_CONTENT)).getText();
   }
 }
 
 export class PageVisibility {
   isFoundNoRecipeMessagePresent() {
-    return element(by.css(CONTAINER + "#found-no-recipe")).isPresent();
+    return element(by.css(MAIN_CONTENT + "#found-no-recipe")).isPresent();
   }
 
   isFoundRecipeMessagePresent() {
-    return element(by.css(CONTAINER + "#found-recipe")).isPresent();
+    return element(by.css(MAIN_CONTENT + "#found-recipe")).isPresent();
   }
 
   isIngredientColumnPresent() {
-    return element(by.css(CONTAINER + ".ingredient-column")).isPresent();
+    return element(by.css(MAIN_CONTENT + ".ingredient-column")).isPresent();
   }
 
   isMeasureColumnPresent() {
-    return element(by.css(CONTAINER + ".measure-column")).isPresent();
+    return element(by.css(MAIN_CONTENT + ".measure-column")).isPresent();
   }
 
   isRecipeNamePresent() {
-    return element(by.css(CONTAINER + ".recipe-name")).isPresent();
+    return element(by.css(MAIN_CONTENT + ".recipe-name")).isPresent();
   }
 }
 
@@ -79,6 +91,6 @@ export class PageClick {
   }
 
   clickRecipeLink() {
-    element(by.css(CONTAINER + ".recipe-link")).click();
+    element(by.css(MAIN_CONTENT + ".recipe-link")).click();
   }
 }
