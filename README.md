@@ -4,6 +4,7 @@ Small application to display recipes made with public API from https://www.theme
 
 ## Link to demo of application
 Can take 30 seconds to run application on Heroku (sorry, free version got some disadvantage!):
+
 https://menu-palprz.herokuapp.com/recipes
 
 ## Technologies:
@@ -29,9 +30,8 @@ Project requires to have installed `npm` and `Angular` version 12.
 - Go to the root of this project
 - Install dependencies: `npm install`
 - Run server: `ng serve`
-- Run selenium grid `webdriver-manager start`
+- Run selenium grid: `webdriver-manager start`
 - Run protractor: `protractor e2e/protractor.conf.js`
-
 
 ## Where the name of app came from?
 Name of the application `Me'N'U` (pronounce: "me and you") came from one of the episodes of The Big Bang Theory.
