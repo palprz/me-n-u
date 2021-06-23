@@ -5,7 +5,7 @@ Small application to display recipes made with public API from https://www.theme
 ## Link to demo of application
 Can take 30 seconds to run application on Heroku (sorry, free version got some disadvantage!):
 
-https://menu-palprz.herokuapp.com/recipes
+https://menu-palprz.herokuapp.com
 
 ## Technologies:
 - HTML
