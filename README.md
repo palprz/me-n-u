@@ -5,13 +5,13 @@ Small application to display recipes made with public API from https://www.theme
 ## Screenshots from running application
 
 Application before search anything:
-![Screenshot with application before search anything](1_start)
+![Screenshot with application before search anything][1_start]
 
 List with found recipes:
-![Screenshot with list with found recipes](2_list_recipes)
+![Screenshot with list with found recipes][2_list_recipes]
 
 Example of the searched single recipe:
-![Screenshot with example of the searched single recipe](3_single_recipe)
+![Screenshot with example of the searched single recipe][3_single_recipe]
 
 ## Technologies:
 - HTML
