@@ -1,11 +1,17 @@
-# Me'N'U [September 2019 - refreshed in June 2021]
+# Me'N'U
 
 Small application to display recipes made with public API from https://www.themealdb.com/ website.
 
-## Link to demo of application
-Can take 30 seconds to run application on Heroku (sorry, free version got some disadvantage!):
+## Screenshots from running application
 
-https://menu-palprz.herokuapp.com
+Application before search anything:
+![Screenshot with application before search anything](1_start)
+
+List with found recipes:
+![Screenshot with list with found recipes](2_list_recipes)
+
+Example of the searched single recipe:
+![Screenshot with example of the searched single recipe](3_single_recipe)
 
 ## Technologies:
 - HTML
@@ -34,4 +40,8 @@ Project requires to have installed `npm` and `Angular` version 12.
 - Run protractor: `protractor e2e/protractor.conf.js`
 
 ## Where the name of app came from?
-Name of the application `Me'N'U` (pronounce: "me and you") came from one of the episodes of The Big Bang Theory.
+Name of the application `Me'N'U` (pronounce: "me and you") came from one of the episodes of How I Met Your Mother.
+
+[1_start]: https://github.com/palprz/me-n-u/blob/master/screenshots/1_start.png
+[2_list_recipes]: https://github.com/palprz/me-n-u/blob/master/screenshots/2_list_recipes.png
+[3_single_recipe]: https://github.com/palprz/me-n-u/blob/master/screenshots/3_single_recipe.png
